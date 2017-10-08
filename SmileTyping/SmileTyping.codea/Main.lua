@@ -2,7 +2,7 @@
 supportedOrientations(LANDSCAPE_RIGHT)
 -- Use this function to perform your initial setup
 function setup()
-    print("-.- x -. x .. x --. x .... x -")
+   -- print("-.- x -. x .. x --. x .... x -")
     letter = ""
     cameraSource( CAMERA_FRONT )
     current = image(CAMERA)
@@ -49,6 +49,7 @@ function setup()
     code["-..-"] = "X"
     code["-.--"] = "Y"
     code["--.."] = "Z"
+    code[".----"] = "wolves"
 end
 
 function touched(touch)
@@ -69,6 +70,9 @@ function touched(touch)
 end
 
 function parseWord(input)
+    if letter = ".---" then
+        music("Project:wolves.mp3")
+    else
     sound(SOUND_JUMP, 25279)
     if code[letter] ~= nil then
     word=word..code[letter]
@@ -76,6 +80,7 @@ function parseWord(input)
         end
     letter = ""
    -- word = ""
+    end
 end
 
 -- This function gets called once every frame
